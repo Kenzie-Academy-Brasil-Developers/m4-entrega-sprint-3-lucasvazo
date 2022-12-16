@@ -6,6 +6,7 @@
   "author": "FelipeSilva",
   "scripts": {
     "dev": "nodemon",
+    "clear_db": "psql -U Lucas -d tests_products -c \"DELETE FROM products; DELETE FROM categories;\" \"exit\" ",
     "actions": "cross-env NODE_ENV=test DB_USER=kenzie DB_PASSWORD=kenzie jest --forceExit",
     "test": "cross-env NODE_ENV=test DB_USER=Lucas DB_PASSWORD=tyqu28oq jest --verbose --forceExit"
   },

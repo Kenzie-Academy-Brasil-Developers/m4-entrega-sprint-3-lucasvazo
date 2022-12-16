@@ -7,9 +7,9 @@ const database = new Client(
   process.env.NODE_ENV === "test"
     ? {
         user: process.env.DB_USER,
-        host: "localhost",
+        host: process.env.DB_HOST,
         database: "tests_products",
-        password: "tyqu28oq",
+        password: process.env.DB_PASSWORD,
         port: 5432,
       }
       : 

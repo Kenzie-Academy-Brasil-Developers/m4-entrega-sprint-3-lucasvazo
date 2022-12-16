@@ -2,7 +2,7 @@ import app from "./app";
 import "dotenv/config";
 import { startDatabase } from "./database";
 
-app.listen(3000, () => {
+export default app.listen(3000, async () => {
     console.log("Server running");
-    startDatabase();
+    await startDatabase();
 });

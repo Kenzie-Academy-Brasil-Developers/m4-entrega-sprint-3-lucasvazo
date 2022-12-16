@@ -9,7 +9,5 @@ export const listCategoriesService = async () => {
             categories
         `);
 
-    console.log(queryResponse.rows)
-
     return [200, queryResponse.rows]
 };
