@@ -3,7 +3,10 @@ import { createNewCategorySchema } from "../serializers/newCategory.serializers"
 
 export const addCategoriesService = async (payload) => {
     try {
-        const validated = await createNewCategorySchema.validate(payload)
+        const validated = await createNewCategorySchema.validate(payload, {
+            abortEarly: false,
+            stripUnknown: true
+        })
         const queryResponse = await database.query(
             `
             INSERT INTO 
@@ -13,7 +16,7 @@ export const addCategoriesService = async (payload) => {
             RETURNING
                 *
             `,
-            [payload.name]
+            [validated.name]
             );
     
         return [201, {id: queryResponse.rows[0].id, name: queryResponse.rows[0].name }]
