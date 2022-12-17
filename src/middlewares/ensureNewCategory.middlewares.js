@@ -1,4 +1,5 @@
 import database from "../database";
+import { AppError } from "../errors";
 
 export const ensureNewCategory = async (req, res, next) => {
   const categoryName = req.body.name;
@@ -16,7 +17,7 @@ export const ensureNewCategory = async (req, res, next) => {
   );
 
   if (checkCategoryExists.rows.length > 0) {
-    return res.status(400).json({ message: "Categoria já existente." });
+    throw new AppError("Categoria já existente.", 400)
   }
 
   return next();

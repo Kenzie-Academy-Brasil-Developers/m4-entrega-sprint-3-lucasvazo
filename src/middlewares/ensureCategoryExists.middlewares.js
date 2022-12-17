@@ -1,10 +1,11 @@
 import database from "../database";
+import { AppError } from "../errors";
 
 export const ensureCategoryExistsMiddleware = async (req, res, next) => {
   const categoryId = req.params.id;
 
   if (!isFinite(categoryId)) {
-    return res.status(404).json({ "message" : "Categoria não existente" });
+    throw new AppError("Categoria não existente", 404)
   }
 
   const checkCategoryExists = await database.query(
@@ -20,7 +21,7 @@ export const ensureCategoryExistsMiddleware = async (req, res, next) => {
   );
 
   if (checkCategoryExists.rows.length < 1) {
-    return res.status(404).json({ "message" : "Categoria não existente" });
+    throw new AppError("Categoria não existente", 404)
   }
 
   return next();

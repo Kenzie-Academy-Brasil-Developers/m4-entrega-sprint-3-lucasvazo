@@ -1,7 +1,6 @@
 import { listRequiredCategoryService } from "../services/listRequiredCaterogy.services";
 
 export const listRequiredCategoryController = async (req, res) => {
-    const categoryId = req.params.id;
-    const [ responseStatus, responseBody ] = await listRequiredCategoryService(categoryId)
-    return res.status(responseStatus).json(responseBody)
+    const responseBody = await listRequiredCategoryService(req.params.id);
+    return res.status(200).json(responseBody);
 }

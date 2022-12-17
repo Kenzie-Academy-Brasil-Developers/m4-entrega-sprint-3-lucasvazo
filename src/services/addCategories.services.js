@@ -1,5 +1,6 @@
 import database from "../database";
 import { createNewCategorySchema } from "../serializers/newCategory.serializers";
+import { AppError } from "../errors";
 
 export const addCategoriesService = async (payload) => {
     try {
@@ -19,8 +20,9 @@ export const addCategoriesService = async (payload) => {
             [validated.name]
             );
     
-        return [201, {id: queryResponse.rows[0].id, name: queryResponse.rows[0].name }]
+        return {id: queryResponse.rows[0].id, name: queryResponse.rows[0].name }
     } catch(error) {
-        return [400, {message: error.errors[0]}]
+        console.log(error.errors[0])
+        throw new AppError(error.errors[0], 400)
     }
 }

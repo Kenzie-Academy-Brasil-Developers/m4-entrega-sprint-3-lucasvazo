@@ -12,5 +12,5 @@ export const listRequiredCategoryService = async (payload) => {
             categories.id = ($1)
         `, [payload]);
 
-    return [200, {name: queryResponse.rows[0].name}]
+    return {name: queryResponse.rows[0].name};
 }
