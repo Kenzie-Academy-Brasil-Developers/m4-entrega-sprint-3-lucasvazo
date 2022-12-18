@@ -8,7 +8,8 @@ export const listProductsService = async () => {
         FROM
             products
     `);
+    console.log(allProducts.rows)
+
 
     return allProducts.rows
-
 };
