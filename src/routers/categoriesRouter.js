@@ -7,7 +7,6 @@ import { ensureCategoryExistsMiddleware } from "../middlewares/ensureCategoryExi
 import { editCategoryController } from "../controllers/editCategory.controllers";
 import { deleteCategoryController } from "../controllers/deleteCategory.controllers";
 
-
 const categoriesRouter = Router()
 
 categoriesRouter.get('', listCategoriesController);
